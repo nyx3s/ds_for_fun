@@ -1,9 +1,7 @@
 # auther: @nyx3s
 # Date: 25 Aug 2025
 """ 
-This is a test code and ites made for fun in booring eveing and my brother asked
-me about the linked list so i thuout i forget it so i re implemented in python
-for frist time i hope the code help every one happycoding.
+This is a test code and it’s made for fun in a boring evening. My brother asked me about the linked list, and I thought I had forgotten it, so I re-implemented it in Python for the first time. I hope the code helps everyone. Happy coding!
 """
 
 class Node:

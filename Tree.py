@@ -47,6 +47,44 @@ class BST:
 
 
         return add_Rec(self.root, data)
+    
+    def search(self,value):
+
+        def search_rec(crr, value):
+            if crr == None:
+                return False
+            elif value > crr.data:
+                return search_rec(crr.right, value)
+            elif value < crr.data:
+                return search_rec(crr.left, value)
+            return True
+
+        return search_rec(self.root, value) 
+
+    def delete(self, value):
+
+        def delete_rec(crr, value):
+            return 
+
+        return delete(self.root, value)
+
+    def min(self):
+
+        def min_h(crr):
+            if crr.left == None:
+                return crr
+            return min_h(crr.left)
+        
+        return min_h(self.root)
+
+    def height(self):
+
+        def height_h(crr):
+            if crr == None:
+                return -1
+            return 1 + max(height_h(crr.left),height_h(crr.right))
+
+        return height_h(self.root)
 
 def test():
     """simple test before the implemntion of the func tests."""
@@ -56,7 +94,20 @@ def test():
     b.add(12)
     b.add(1)
     b.add(6)
+    b.add(13)
     b.show()
+    # search test
+    """ 
+    print(b.search(1))
+    print(b.search(6))
+    print(b.search(33))
+    b.add(13)
+    print(b.search(13))
+    b.show()
+    """
+    # min test
+    #print("min Node is : ",b.min())
+    print(b.height())
 
 """ main test of the tow clases above"""
 test()

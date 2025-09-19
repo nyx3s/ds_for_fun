@@ -50,32 +50,74 @@ class BST:
     
     def search(self,value):
 
-        def search_rec(crr, value):
+        def search_rec(crr):
             if crr == None:
                 return False
             elif value > crr.data:
-                return search_rec(crr.right, value)
+                return search_rec(crr.right)
             elif value < crr.data:
-                return search_rec(crr.left, value)
+                return search_rec(crr.left)
             return True
 
-        return search_rec(self.root, value) 
+        return search_rec(self.root) 
+
 
     def delete(self, value):
 
         def delete_rec(crr, value):
-            return 
+            if crr == None:
+                #print("stop")
+                return crr
+            elif value > crr.data:
+                crr.right = delete_rec(crr.right, value)
+            elif value < crr.data:
+                crr.left = delete_rec(crr.left, value)
+            else:
+                #in these step crr is equlse to the value
+                left = crr.left
+                right = crr.right
+                #print("right : ",right)
+                #print("left : ",left)
+                #print("crr : ",crr)
+                #print("_____________________________")
+                #self.show()
+                #input()
+                if left == None and right == None:
+                    return None
+                elif left == None:
+                    return right
+                elif right == None:
+                    return left
+                else:
+                    minNode = self.min(crr.right) 
+                    crr.data = minNode.data
 
-        return delete(self.root, value)
+                    #print("after the right was deleted",crr)
+                    #print("after the right was deleted",crr.right)
+                    crr.right = delete_rec(crr.right, crr.right.data)
+                    #print("after the right was deleted",crr)
+                    #print("after the right was deleted",crr.right)
 
-    def min(self):
+            return crr
+        # u should pass the value at each recursion case bc the value at case three
+        # deletion the delete_rec(crr.right, value) may and maynot equlse to eachother. 
+        self.root = delete_rec(self.root, value)
+        return True
+
+
+    def min(self, otherTreeRoot=None):
 
         def min_h(crr):
             if crr.left == None:
                 return crr
             return min_h(crr.left)
-        
+
+        if otherTreeRoot != None:
+            return min_h(otherTreeRoot)
+
         return min_h(self.root)
+
+
 
     def height(self):
 
@@ -95,7 +137,7 @@ def test():
     b.add(1)
     b.add(6)
     b.add(13)
-    b.show()
+    #b.show()
     # search test
     """ 
     print(b.search(1))
@@ -107,7 +149,19 @@ def test():
     """
     # min test
     #print("min Node is : ",b.min())
-    print(b.height())
+    #print(b.height())
+    #print("__________________________")
+    #print("the results tree is : ",b.delete(5))
+    #b.show()
+    test_delete(b)
+
+def test_delete(btree):
+    l = [11,13,12]
+
+    for i in l :
+        print("__________________________")
+        print(f"the results tree after delete {i} : ",btree.delete(i))
+        btree.show()
 
 """ main test of the tow clases above"""
 test()

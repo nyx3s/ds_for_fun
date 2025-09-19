@@ -65,7 +65,7 @@ class SingeLinkedList:
         l.append("null")
 
         return "".join(l)
-
+"""
 """Test for the above class Node, SingeLinkedList"""
 print("hello world")
 
@@ -78,3 +78,4 @@ l.addRecersion(5)
 l.addRecersion(6)
 l.addRecersion(7)
 print(l)
+"""

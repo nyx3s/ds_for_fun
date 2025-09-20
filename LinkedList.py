@@ -13,8 +13,11 @@ class Node:
 
 class SingeLinkedList:
 
-    def __init__(self,data):
-        self.head:Node = Node(data)
+    def __init__(self,data=None):
+        if data == None:
+            self.head = None
+        else:
+            self.head:Node = Node(data)
 
     def addON(self,data):
         newNode = Node(data)
@@ -58,15 +61,17 @@ class SingeLinkedList:
         return re + "null"
         """
         l = list()
+        l.append("[")
         crr = self.head
         while crr != None:
             l.append(f"{crr.data} => ")
             crr = crr.next
         l.append("null")
+        l.append("]")
 
         return "".join(l)
-"""
 """Test for the above class Node, SingeLinkedList"""
+"""
 print("hello world")
 
 l = SingeLinkedList(1)
